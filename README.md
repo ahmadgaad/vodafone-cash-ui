@@ -108,7 +108,7 @@ lib/
 - **Top App Bar**: Red header with search icon and Vodafone logo
 - **Promotional Carousel**: PageView with dot indicators showing campaigns
 - **Balance Card**: 
-  - Displays current usage (572/500 flex)
+  - Displays current usage
   - Progress bar visualization
   - Days remaining counter
   - Action buttons (Manage Package, Repurchase)
