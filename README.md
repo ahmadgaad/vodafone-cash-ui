@@ -121,12 +121,16 @@ lib/
 
 ## 💾 Data & Caching
 
-### Strategy
-1. Load cached data immediately on app launch
-2. Display cached data for instant UI
-3. Fetch updated data in background (simulated)
-4. Update UI and cache on success
-5. Show offline indicator on failure
+### Strategy (Remote-First with Cache Fallback)
+1. **Fetch from remote**: Always attempt to fetch fresh data from remote data source first
+2. **Cache on success**: If remote fetch succeeds, immediately cache the data
+   - Balance data (`BalanceModel`)
+   - Service cards (`List<ServiceCardModel>`)
+   - Services (`List<ServiceModel>`)
+   - Promotions (`List<PromotionModel>`)
+3. **Fallback to cache**: If remote fetch fails, return cached data if available
+4. **Error handling**: Only return error if both remote fetch and cache retrieval fail
+5. **Cache invalidation**: Clear all home-related cache when needed via `clearCache()`
 
 ### Cache Keys
 - `cached_balance` - User balance data
