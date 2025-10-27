@@ -16,25 +16,77 @@ This project follows **Clean Architecture** principles with clear separation of 
 
 ```
 lib/
-├── core/
-│   ├── theme/              # App theming (colors, text styles, dimensions)
-│   ├── constants/          # App-wide constants (strings, assets)
-│   ├── routes/             # Navigation and routing
-│   ├── utils/              # Utilities (cache helper)
-│   ├── widgets/            # Reusable animated widgets
-│   ├── mock_data/          # Mock data for development
-│   └── di/                 # Dependency injection setup
-├── features/
-│   ├── home/               # Home screen feature
-│   │   ├── presentation/   # UI (screens, widgets)
-│   │   ├── domain/         # Business logic (entities, use cases)
-│   │   └── data/           # Data layer (models, repositories)
-│   ├── offers/             # Offers screen feature
-│   ├── messages/           # Messages/Notifications feature
-│   ├── profile/            # Profile management feature
-│   └── more/               # Additional services feature
-└── presentation/
-    └── widgets/            # App-level widgets (main wrapper, bottom nav)
+├── core/                           # Shared app-wide resources
+│   ├── base_usecase.dart          # Base class for all use cases
+│   ├── theme/                     # App theming
+│   │   ├── app_colors.dart        # Color palette
+│   │   ├── app_dimensions.dart    # Spacing & sizing
+│   │   ├── app_text_styles.dart   # Typography
+│   │   └── app_theme.dart         # Theme configuration
+│   ├── constants/                 # App-wide constants
+│   │   ├── app_strings.dart       # Text constants
+│   │   └── assets.dart            # Asset paths
+│   ├── routes/                    # Navigation
+│   │   ├── app_routes.dart        # Route names
+│   │   └── route_generator.dart   # Route configuration
+│   ├── utils/                     # Utilities
+│   │   ├── cache_helper.dart      # SharedPreferences wrapper
+│   │   └── helpers.dart           # Helper functions
+│   ├── widgets/                   # Reusable widgets
+│   │   ├── animated_fade_in.dart
+│   │   ├── animated_slide_in.dart
+│   │   └── shimmer_loading.dart
+│   ├── mock_data/                 # Mock data for development
+│   │   └── mock_data.dart
+│   └── di/                        # Dependency injection
+│       └── injection_container.dart
+│
+├── features/                       # Feature modules (Clean Architecture)
+│   ├── home/
+│   │   ├── data/
+│   │   │   ├── datasources/       # Data sources (remote/local)
+│   │   │   │   ├── home_remote_data_source.dart
+│   │   │   │   └── home_local_data_source.dart
+│   │   │   ├── models/            # Data models (JSON serialization)
+│   │   │   │   ├── balance_model.dart
+│   │   │   │   ├── service_card_model.dart
+│   │   │   │   ├── service_model.dart
+│   │   │   │   └── promotion_model.dart
+│   │   │   └── repositories/      # Repository implementations
+│   │   │       └── home_repository_impl.dart
+│   │   ├── domain/
+│   │   │   ├── entities/          # Business entities
+│   │   │   │   ├── balance_entity.dart
+│   │   │   │   ├── service_entity.dart
+│   │   │   │   └── promotion_entity.dart
+│   │   │   ├── repositories/      # Repository interfaces
+│   │   │   │   └── home_repository.dart
+│   │   │   └── usecases/          # Business logic
+│   │   │       ├── get_balance_usecase.dart
+│   │   │       ├── get_service_cards_usecase.dart
+│   │   │       ├── get_services_usecase.dart
+│   │   │       └── get_promotions_usecase.dart
+│   │   └── presentation/
+│   │       ├── screens/           # Screen widgets
+│   │       │   └── home_screen.dart
+│   │       ├── components/        # UI components
+│   │       │   ├── custom_home_app_bar.dart
+│   │       │   ├── home_screen_content.dart
+│   │       │   ├── service_grid/
+│   │       │   ├── service_cards_carousel/
+│   │       │   └── promotional_card_with_indicator/
+│   │       └── controller/        # State management (Cubit)
+│   │           ├── home_cubit.dart
+│   │           └── home_state.dart
+│   │
+│   ├── offers/                    # Offers feature (same structure)
+│   ├── messages/                  # Messages/Notifications feature
+│   ├── profile/                   # Profile management feature
+│   ├── more/                      # Additional services feature
+│   └── main_wrapper.dart          # Main navigation wrapper
+│
+├── main.dart                      # App entry point
+└── vodafone_app.dart              # App widget configuration
 ```
 
 ## 🎨 Design System
