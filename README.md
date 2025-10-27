@@ -2,7 +2,6 @@
 
 A Flutter mobile app interface inspired by the Vodafone Cash application, featuring modern UI design, smooth animations, and clean architecture.
 
-## 📱 Screenshots
 
 The app replicates the Vodafone app interface with:
 - Home screen with balance cards and service grid
