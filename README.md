@@ -99,7 +99,6 @@ lib/
 
 ### Key Features
 - Responsive layout with SafeArea handling
-- Custom theme with Arabic/English text support
 - Consistent spacing and dimensions
 - Shadow and elevation styles matching Vodafone design
 
